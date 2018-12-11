@@ -23,11 +23,12 @@ export class MedecinsComponent {
    constructor( private dataService : DataService){}
    charger() : void{
         this.dataService.chargerMedecins(this.nomMedecin)
-                                  .subscribe( 
-                                      (data)=>{this.lesMedecins = data;
-                                         }
-                                      ,(error)=>{}
-                                              );
+          .subscribe(
+            (data)=>
+            {
+              this.lesMedecins = data;
+            }
+            ,(error)=>{});
    }
    selectionner(med) : void{
         this.medecin = med;

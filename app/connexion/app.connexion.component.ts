@@ -11,102 +11,39 @@ import { DataService} from '../services/app.service.data';
 
 })
 export class ConnexionComponent {
-   titre : string ="Connexion";
-   lblLogin : string ="Login";
-   lblMdp : string ="Mot de passe";
-   login : string ;
-   mdp : string;
-   estCache : boolean = true;
-   lblMessage : string = "";
-   visiteur : any;
-
-   constructor(private router : Router,private dataService : DataService){}
-  valider():void{
-            this.dataService.connexion(this.login,this.mdp)
-                                  .subscribe( 
-                                      (data)=>{this.visiteur = data;
-                                        this.dataService.visiteur = data;       // ajouté pour récupérer le visiteur dans la gestion des rapports
-                                         this.router.navigate(['accueil']);}
-                                      ,(error)=>{this.estCache = false;
-                                               this.lblMessage = "erreur";}
-                                              );
-      }  
-
-
-
-
-   }
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  titre       : string = "Connexion";
+  lblLogin    : string = "Login";
+  lblMdp      : string = "Mot de passe";
+  login       : string;
+  mdp         : string;
+  estCache    : boolean = true;
+  lblMessage  : string = "";
+  visiteur    : any;
+
+  constructor(private router : Router,private dataService : DataService)
+  {
+
+  }
+
+  valider() : void
+  {
+    this.dataService
+      .connexion(
+        this.login,
+        this.mdp
+      )
+      .subscribe(
+        (data)=>
+        {
+          this.visiteur = data;
+          this.dataService.visiteur = data;
+          this.router.navigate(['accueil']);
+        },
+        (error)=>
+        {
+          this.estCache = false;
+          this.lblMessage = "erreur";
+        }
+      );
+  }  
+}
